@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+// Plant Model
 const plantSchema = new mongoose.Schema({  
         plantname:{
                 type:String,
