@@ -14,6 +14,7 @@ const inventorySchema = new mongoose.Schema({
         quantity: {
                 type: Number,
                 required: true,
+                //validating the number
                 validate: {
                         validator: Number.isInteger,
                         message: '{VALUE} is not an integer value',
