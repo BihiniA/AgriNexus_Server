@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-import route from "./routes/inventoryAdminRoute.js";
+import route from "./routes/inventoryAdminRoute.js";   //Adding the router
 
 
 const app = express();
