@@ -1,26 +1,24 @@
-import express from "express";
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
-import cors from "cors"; 
-import route from "./routes/plantAdminRoute.js";
+const express = require('express');
+const mongoose = require('mongoose');
+const taskRouter = require('./routes/tasks'); // Path to your task.js file
 
 const app = express();
-app.use(bodyParser.json());
-dotenv.config();
+const port = 8000;
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-const PORT = process.env.PORT || 7000;
-const MONGOURL = process.env.MONGO_URL;
+mongoose.connect('mongodb+srv://AgriNexus:AgriNexus123@agrinexus.lldxe.mongodb.net/?retryWrites=true&w=majority&appName=AgriNexus', { // Replace with your MongoDB connection string
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
-mongoose
-  .connect(MONGOURL)
-  .then(() => {
-    console.log("DB connected successfully.");
-    app.listen(PORT, () => {
-      console.log(`Server is running on port :${PORT} `);
-    });
-  })
-  .catch((error) => console.log(error));
+app.use(express.json()); // Middleware to parse JSON request bodies
 
-app.use("/api", route);
+app.use('/tasks', taskRouter); // Mount the task router at the /tasks path
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
