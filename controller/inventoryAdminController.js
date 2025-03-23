@@ -1,4 +1,4 @@
-import Inventories from "../model/inventoryAdminModel.js";
+import Inventories from "../model/inventoryAdminModel.js";  //connecting the model to controller
 
 // Create the New Inventory
 export const create = async (req, res) => {
