@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+//Implementing the model
 const inventorySchema = new mongoose.Schema({
         inventoryname: {
                 type: String,
