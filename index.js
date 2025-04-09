@@ -3,13 +3,14 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors"; 
-import route from "./routes/plantAdminRoute.js";
+import plantAdminRoute from "./routes/plantAdminRoute.js";
+import userRoute from "./routes/userRoute.js";  
+import InquiryRoute from "./routes/InquiryRoute.js";
 
 const app = express();
 app.use(bodyParser.json());
 dotenv.config();
 
-// Backend
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 const PORT = process.env.PORT || 7000;
 const MONGOURL = process.env.MONGO_URL;
@@ -24,4 +25,6 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-app.use("/api", route);
+  app.use("/api", plantAdminRoute);
+  app.use("/api", userRoute);  
+  app.use("/api", InquiryRoute);
