@@ -3,11 +3,14 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors"; 
-import route from "./routes/plantAdminRoute.js";
+import paymentRoute from './routes/PaymentRoute.js';
+import userRoute from "./routes/userRoute.js";  
+
 
 const app = express();
 app.use(bodyParser.json());
 dotenv.config();
+app.use(cors());
 
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 const PORT = process.env.PORT || 7000;
@@ -23,4 +26,5 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-app.use("/api", route);
+app.use("/api", paymentRoute);
+app.use("/api", userRoute); 
