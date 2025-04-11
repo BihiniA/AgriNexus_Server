@@ -1,14 +1,17 @@
+// Importing the Product model from the model folder
 import Products from "../model/productModel.js";
 
 // Create Products
 export const create = async (req, res) => {
     try {
+         // Create a new product instance with data from the request body
         const newProduct = new Products(req.body);
-
+          // Check if a product with the same name already exists in the database
         const productExist = await Products.findOne({ name: newProduct.name });
         if (productExist) {
             return res.status(400).json({ message: "Product already exists." });
         }
+         // Save the new product to the database
         const savedData = await newProduct.save();
         // res.status(200).json(savedData);
         res.status(200).json({ message: "Product Created successfully." });
@@ -28,6 +31,7 @@ export const getAllProducts = async (req, res) => {
         }
 
         res.status(200).json(productData);
+         // Handle server errors
     } catch (error) {
         res.status(500).json({ errorMessage: error.message });
     }
@@ -36,14 +40,18 @@ export const getAllProducts = async (req, res) => {
 // Get Product By ID
 export const getProductById = async (req, res) => {
     try {
+         // Retrieve all product documents from the database
         const { id } = req.params;
         console.log("id", id)
         const productExist = await Products.findById(id);
+        // If no products are found, return a not found message
         if (!productExist) {
             return res.status(404).json({ message: "Product not found." });
         }
+         // Respond with the list of products
         res.status(200).json(productExist);
     } catch (error) {
+         // Handle server errors
         res.status(500).json({ errorMessage: error.message });
     }
 };
