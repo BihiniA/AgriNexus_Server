@@ -1,6 +1,6 @@
 import Delivery from "../model/deliveryModel.js";
 
-// Create a New Delivery
+// Create a New Delivery controller
 export const createDelivery = async (req, res) => {
     try {
         const newDelivery = new Delivery(req.body);
