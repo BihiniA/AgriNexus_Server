@@ -1,4 +1,5 @@
 import Item from "../model/itemModel.js";
+//Adding a controller to items
 
 // Create a New Item
 export const createItem = async (req, res) => {
