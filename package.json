@@ -11,6 +11,10 @@
   "description": "",
   "dependencies": {
     "body-parser": "^1.20.3",
+<<<<<<< HEAD
+=======
+    "cors": "^2.8.5",
+>>>>>>> d52702a (delivery-backend)
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.12.1"
