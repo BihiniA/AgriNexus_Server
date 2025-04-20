@@ -26,5 +26,6 @@ mongoose
   })
   .catch((error) => console.log(error));
 
+//Main router
 app.use("/api", inventoryAdminRoute);
 app.use("/api", itemRoute);
