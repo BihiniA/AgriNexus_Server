@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-import route from "./routes/inventoryAdminRoute.js";   //Adding the router
+import inventoryAdminRoute from "./routes/inventoryAdminRoute.js";   //Adding the router
+import itemRoute from "./routes/itemRoute.js";
 
 
 const app = express();
@@ -25,4 +26,5 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-app.use("/api", route);
+app.use("/api", inventoryAdminRoute);
+app.use("/api", itemRoute);
