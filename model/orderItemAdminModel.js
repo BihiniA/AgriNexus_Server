@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+//  Delivery Model
 const orderItemSchema = new mongoose.Schema({
         order_id: {
                 type: String,
