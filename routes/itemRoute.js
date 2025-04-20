@@ -11,6 +11,7 @@ import {
 
 const router = express.Router();
 
+//Adding API routes
 router.post("/create", createItem);
 router.get("/getall", getAllItems);
 router.get("/:itemId", getItemById);
